@@ -1,2 +1,1 @@
-# Discord-Token-Logger
-Basic Token Grabber 
+Basic Token Grabber Used Via Webhook
