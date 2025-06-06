@@ -1,1 +1,1 @@
-Simple and Easy to Use Token Logger Script:)
+Simple and Easy to Use Token Grabber Script:)
