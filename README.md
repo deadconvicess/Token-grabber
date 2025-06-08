@@ -1,2 +1,3 @@
-Simple and Easy to Use Token Grabber Script:)
+Simple and Easy to Use Token Logger Script:)
+
 
