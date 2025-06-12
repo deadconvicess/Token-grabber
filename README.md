@@ -104,4 +104,4 @@ This project is licensed under the MIT License.
 Created with 💻 by deadconvicess
 If you like this project, star it ⭐ and help spread ethical awareness!
 
-<p align="center"> <img src="https://i.imgur.com/KGndySh.gif" width="400" /> </p> ```
+<p align="center"> <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382528287791775936/download.jpg?ex=684b7b4d&is=684a29cd&hm=e2c53e1106d5f2dec08a77390110f489fd299d7b5833b261ddcc054ceb6fac65&" width="400" /> </p> ```
