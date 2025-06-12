@@ -1,103 +1,107 @@
-# 🛡️ Secure Token Logger (Educational Use Only)
+<p align="center">
+  <img src="https://i.imgur.com/vdks5Ui.png" alt="Secure Token Logger" width="800"/>
+</p>
 
-> ⚠️ **Disclaimer**: This project is intended strictly for **educational**, **research**, and **cybersecurity awareness** purposes. Do **not** use this code for unethical or illegal activities. The author does not condone misuse of this code in any way.
+<h1 align="center">🛡️ Secure Token Logger</h1>
 
----
+<p align="center">
+  <b>A proof-of-concept Discord token logger for education and ethical awareness.</b><br>
+  <i>Understand how token theft works so you can build better defenses.</i>
+</p>
 
-## 🚀 Overview
-
-This project demonstrates how Discord token loggers might work. It simulates how local tokens are discovered and exfiltrated, allowing developers and security professionals to understand the risk and build effective defenses.
-
-### 🔍 Why Use This?
-
-- To understand the **inner workings** of malicious token-stealing scripts.
-- For learning how to **detect, mitigate, or prevent** similar threats.
-- As an **educational example** of Windows-based scripting and encryption.
-
----
-
-## 🧠 Features
-
-- 🔐 Token decryption via local master key
-- 📦 Extracts Discord tokens from Chromium-based browsers
-- ⚙️ Built-in anti-debug and VM detection
-- 📤 Simulates data exfiltration via webhook
-- 🧪 AES encryption demonstration
-- 🖥️ Grabs basic system/user info (for testing)
+<p align="center">
+  <a href="https://github.com/deadconvicess/Discord-Token-Logger/stargazers">
+    <img src="https://img.shields.io/github/stars/deadconvicess/Discord-Token-Logger?color=yellow&style=for-the-badge"/>
+  </a>
+  <a href="https://github.com/deadconvicess/Discord-Token-Logger/issues">
+    <img src="https://img.shields.io/github/issues/deadconvicess/Discord-Token-Logger?color=blue&style=for-the-badge"/>
+  </a>
+  <a href="https://github.com/deadconvicess/Discord-Token-Logger/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/deadconvicess/Discord-Token-Logger?color=green&style=for-the-badge"/>
+  </a>
+</p>
 
 ---
 
-## ⚙️ Installation
+## 🚨 Disclaimer
 
-### ✅ Requirements
+> ⚠️ This tool is **only intended for educational and ethical research purposes**.  
+> ❌ **Do NOT use this tool on systems or accounts you do not own or have explicit permission to test.**
 
-- Python 3.8 or higher
+---
+
+## 🔍 What Is It?
+
+A simulated Discord token logger that showcases how malicious scripts collect and exfiltrate authentication tokens. It's designed to help you:
+
+- 👨‍💻 Understand attack vectors
+- 🛡️ Build detection tools
+- 🧠 Learn how to protect your own systems
+
+---
+
+## ✨ Features
+
+- 🔐 Decrypt Discord tokens using local encryption keys
+- 📤 Send logs to a test Discord webhook
+- 🕵️ Anti-debugging and virtual machine checks
+- 📋 Clipboard monitoring (educational)
+- 🗃️ Targets multiple browsers (Chrome, Brave, Edge, etc.)
+- 🔒 AES encryption demo
+
+---
+
+## ⚙️ Setup
+
+### 🧾 Requirements
+
 - Windows OS
+- Python 3.8+
 
-### 📦 Dependencies
-
-Install via pip:
+### 📦 Install Dependencies
 
 ```bash
 pip install pycryptodome pyperclip pillow pypiwin32
 
-
-🛠️ Usage
-⚠️ Use in a controlled test environment or sandbox.
-
-Replace the webhook placeholder in main.py:
+🚀 Usage
+Replace the WEBHOOK_URL variable in main.py:
 
 python
 Copy
 Edit
-WEBHOOK_URL = "https://your.webhook.here"
-Run the script:
+WEBHOOK_URL = "https://your.webhook.url"
+Run the script in a test/sandbox environment:
 
 bash
 Copy
 Edit
 python main.py
-The script will gather local Discord tokens (if available) and simulate sending them to your test webhook.
-
-📁 Project Structure
+🗂️ Folder Structure
 bash
 Copy
 Edit
 .
-├── main.py         # Main script (educational simulation)
+├── main.py         # Main script
 ├── README.md       # This file
-🧪 Educational Goals
-Teach how Discord token loggers operate
+🧠 Learning Objectives
+Analyze how real-world token stealers operate
 
-Raise awareness about sensitive local storage handling
+Raise awareness about poor credential handling
 
-Demonstrate token encryption and decryption
+Experiment with encryption and reporting methods
 
-Help developers defend against such threats
+Practice secure scripting with Python
 
-❗ Legal Notice
-This code is provided as-is for research and educational purposes. The author is not responsible for any misuse. Unauthorized access, data collection, or deployment of this code without consent is illegal.
+🧪 Ethical Usage
+This repository is NOT a tool for hacking. It’s a learning resource. If you find real vulnerabilities while studying similar behavior, report them responsibly.
 
-📎 License
+👨‍⚖️ Unauthorized use = illegal. Be ethical.
+
+📜 License
 This project is licensed under the MIT License.
 
-🧠 Credits
-Created by deadconvicess for demonstration and ethical awareness purposes.
+💬 Connect
+Created with 💻 by deadconvicess
+If you like this project, star it ⭐ and help spread ethical awareness!
 
-Want to learn more about token security? Check out:
-
-Discord Developer Docs
-
-OWASP Top 10
-
-yaml
-Copy
-Edit
-
----
-
-### ✅ To Use It:
-- Save this as `README.md` in your repository.
-- GitHub will render it nicely with icons and sections.
-
-Would you like a **banner image** or **GitHub badges** added to this for even more polish?
+<p align="center"> <img src="https://i.imgur.com/KGndySh.gif" width="400" /> </p> ```
