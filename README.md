@@ -52,24 +52,13 @@ pip install pycryptodome pyperclip pillow pypiwin32
 
 🧪 Usage
 Clone this repo:
-
-bash
-Copy
-Edit
 git clone https://github.com/deadconvicess/Token-Logger-Script
 cd Token-Logger-Script
 Open main.py and replace the webhook URL:
 
-python
-Copy
-Edit
 WEBHOOK_URL = "https://your.discord.webhook.url"
 Run the script in a controlled test environment:
 
-bash
-Copy
-Edit
-python main.py
 🔒 Warning: Only run this script in a safe, isolated environment. You are responsible for how you use it.
 
 🧠 Learning Objectives
@@ -84,9 +73,6 @@ Encourage responsible handling of sensitive local data
 Raise awareness of endpoint security risks
 
 🧰 Project Structure
-bash
-Copy
-Edit
 Token-Logger-Script/
 ├── main.py         # Main logger script (educational)
 ├── README.md       # This file
