@@ -55,7 +55,6 @@ Clone this repo:
 git clone https://github.com/deadconvicess/Token-Logger-Script
 cd Token-Logger-Script
 Open main.py and replace the webhook URL:
-
 WEBHOOK_URL = "https://your.discord.webhook.url"
 Run the script in a controlled test environment:
 
@@ -63,20 +62,10 @@ Run the script in a controlled test environment:
 
 🧠 Learning Objectives
 This simulation was made to:
-
 Show how easy it is to extract credentials stored insecurely
-
 Help blue teams detect and defend against token theft
-
 Encourage responsible handling of sensitive local data
-
 Raise awareness of endpoint security risks
-
-🧰 Project Structure
-Token-Logger-Script/
-├── main.py         # Main logger script (educational)
-├── README.md       # This file
-📄 License
 This project is licensed under the MIT License.
 
 ⭐ Credits
