@@ -65,24 +65,8 @@ pip install pycryptodome pyperclip pillow pypiwin32
 
 🚀 Usage
 Replace the WEBHOOK_URL variable in main.py:
-
-python
-Copy
-Edit
 WEBHOOK_URL = "https://your.webhook.url"
-Run the script in a test/sandbox environment:
-
-bash
-Copy
-Edit
-python main.py
-🗂️ Folder Structure
-bash
-Copy
-Edit
-.
-├── main.py         # Main script
-├── README.md       # This file
+   
 🧠 Learning Objectives
 Analyze how real-world token stealers operate
 
@@ -91,11 +75,6 @@ Raise awareness about poor credential handling
 Experiment with encryption and reporting methods
 
 Practice secure scripting with Python
-
-🧪 Ethical Usage
-This repository is NOT a tool for hacking. It’s a learning resource. If you find real vulnerabilities while studying similar behavior, report them responsibly.
-
-👨‍⚖️ Unauthorized use = illegal. Be ethical.
 
 📜 License
 This project is licensed under the MIT License.
