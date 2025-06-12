@@ -1,86 +1,100 @@
-<p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382529358945718362/token.png?ex=684b7c4d&is=684a2acd&hm=cce26f745b8763bf8abb5e806cbbb50a790f83b6bbe474edd4a1822599aaebc6&" alt="Secure Token Logger" width="800"/>
-</p>
+# 🛡️ Token Logger (Educational Use Only)
 
-<h1 align="center">🛡️Token Logger</h1>
-
-<p align="center">
-  <b>A proof-of-concept Discord token logger for education and ethical awareness.</b><br>
-  <i>Understand how token theft works so you can build better defenses.</i>
-</p>
-
-<p align="center">
-  <a href="https://github.com/deadconvicess/Discord-Token-Logger/stargazers">
-    <img src="https://img.shields.io/github/stars/deadconvicess/Discord-Token-Logger?color=yellow&style=for-the-badge"/>
-  </a>
-  <a href="https://github.com/deadconvicess/Discord-Token-Logger/issues">
-    <img src="https://img.shields.io/github/issues/deadconvicess/Discord-Token-Logger?color=blue&style=for-the-badge"/>
-  </a>
-  <a href="https://github.com/deadconvicess/Discord-Token-Logger/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/deadconvicess/Discord-Token-Logger?color=green&style=for-the-badge"/>
-  </a>
-</p>
+A simulated Discord token logger made for **educational**, **awareness**, and **research purposes**.  
+This project helps demonstrate how token theft works — empowering developers and defenders to build better protection.
 
 ---
 
 ## 🚨 Disclaimer
 
-> ⚠️ This tool is **only intended for educational and ethical research purposes**.  
-> ❌ **Do NOT use this tool on systems or accounts you do not own or have explicit permission to test.**
+> ⚠️ This repository is intended strictly for **ethical and educational** use.  
+> ❌ Do **NOT** deploy, distribute, or use this tool on systems or accounts you do not **own** or have **explicit permission** to analyze.  
+> 🧑‍⚖️ Misuse of this project may be illegal under local and international law.
 
 ---
 
 ## 🔍 What Is It?
 
-A simulated Discord token logger that showcases how malicious scripts collect and exfiltrate authentication tokens. It's designed to help you:
+This project simulates a Discord token logger. It shows how a malicious actor could extract and exfiltrate user tokens and basic metadata from browsers and local files using:
 
-- 👨‍💻 Understand attack vectors
-- 🛡️ Build detection tools
-- 🧠 Learn how to protect your own systems
+- Discord desktop installations
+- Chromium-based browsers (e.g., Chrome, Edge, Brave)
+- Encrypted token storage using Windows APIs
+
+> This is for red-team demos, education, or understanding real-world threats.
 
 ---
 
 ## ✨ Features
 
-- 🔐 Decrypt Discord tokens using local encryption keys
-- 📤 Send logs to a test Discord webhook
-- 🕵️ Anti-debugging and virtual machine checks
-- 📋 Clipboard monitoring (educational)
-- 🗃️ Targets multiple browsers (Chrome, Brave, Edge, etc.)
-- 🔒 AES encryption demo
+- 🔐 Extract and decrypt Discord tokens stored on disk
+- 🧠 AES encryption demonstration for stolen data
+- 📤 Simulate sending data to a webhook (Discord)
+- 🔎 Anti-debugging & sandbox detection
+- 🧪 Virtual machine awareness
+- 🗃️ Supports major Chromium-based browsers and Discord clients
+- 📋 Clipboard monitoring (for awareness purposes)
+- 💻 System user, environment, and MAC info grabbing
 
 ---
 
-## ⚙️ Setup
+## 📦 Installation
 
-### 🧾 Requirements
+### Prerequisites
 
 - Windows OS
 - Python 3.8+
 
-### 📦 Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install pycryptodome pyperclip pillow pypiwin32
 
-🚀 Usage
-Replace the WEBHOOK_URL variable in main.py:
-WEBHOOK_URL = "https://your.webhook.url"
-   
+🧪 Usage
+Clone this repo:
+
+bash
+Copy
+Edit
+git clone https://github.com/deadconvicess/Token-Logger-Script
+cd Token-Logger-Script
+Open main.py and replace the webhook URL:
+
+python
+Copy
+Edit
+WEBHOOK_URL = "https://your.discord.webhook.url"
+Run the script in a controlled test environment:
+
+bash
+Copy
+Edit
+python main.py
+🔒 Warning: Only run this script in a safe, isolated environment. You are responsible for how you use it.
+
 🧠 Learning Objectives
-Analyze how real-world token stealers operate
+This simulation was made to:
 
-Raise awareness about poor credential handling
+Show how easy it is to extract credentials stored insecurely
 
-Experiment with encryption and reporting methods
+Help blue teams detect and defend against token theft
 
-Practice secure scripting with Python
+Encourage responsible handling of sensitive local data
 
-📜 License
+Raise awareness of endpoint security risks
+
+🧰 Project Structure
+bash
+Copy
+Edit
+Token-Logger-Script/
+├── main.py         # Main logger script (educational)
+├── README.md       # This file
+📄 License
 This project is licensed under the MIT License.
 
-💬 Connect
-Created with 💻 by deadconvicess
-If you like this project, star it ⭐ and help spread ethical awareness!
+⭐ Credits
+Created by deadconvicess
+Inspired by real-world malware to aid cybersecurity education.
 
-<p align="center"> <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382529358945718362/token.png?ex=684b7c4d&is=684a2acd&hm=cce26f745b8763bf8abb5e806cbbb50a790f83b6bbe474edd4a1822599aaebc6&" width="400" /> </p> ```
+💡 If you found this useful, give it a ⭐ on GitHub to support ethical security research.
