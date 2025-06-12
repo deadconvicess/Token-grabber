@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/vdks5Ui.png" alt="Secure Token Logger" width="800"/>
+  <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382528287791775936/download.jpg?ex=684b7b4d&is=684a29cd&hm=e2c53e1106d5f2dec08a77390110f489fd299d7b5833b261ddcc054ceb6fac65&" alt="Secure Token Logger" width="800"/>
 </p>
 
 <h1 align="center">🛡️ Secure Token Logger</h1>
