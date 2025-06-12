@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382528287791775936/download.jpg?ex=684b7b4d&is=684a29cd&hm=e2c53e1106d5f2dec08a77390110f489fd299d7b5833b261ddcc054ceb6fac65&" alt="Secure Token Logger" width="800"/>
+  <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382529358945718362/token.png?ex=684b7c4d&is=684a2acd&hm=cce26f745b8763bf8abb5e806cbbb50a790f83b6bbe474edd4a1822599aaebc6&" alt="Secure Token Logger" width="800"/>
 </p>
 
 <h1 align="center">🛡️ Secure Token Logger</h1>
@@ -104,4 +104,4 @@ This project is licensed under the MIT License.
 Created with 💻 by deadconvicess
 If you like this project, star it ⭐ and help spread ethical awareness!
 
-<p align="center"> <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382528287791775936/download.jpg?ex=684b7b4d&is=684a29cd&hm=e2c53e1106d5f2dec08a77390110f489fd299d7b5833b261ddcc054ceb6fac65&" width="400" /> </p> ```
+<p align="center"> <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382529358945718362/token.png?ex=684b7c4d&is=684a2acd&hm=cce26f745b8763bf8abb5e806cbbb50a790f83b6bbe474edd4a1822599aaebc6&" width="400" /> </p> ```
