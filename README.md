@@ -2,7 +2,7 @@
   <img src="https://cdn.discordapp.com/attachments/1381170596859084880/1382529358945718362/token.png?ex=684b7c4d&is=684a2acd&hm=cce26f745b8763bf8abb5e806cbbb50a790f83b6bbe474edd4a1822599aaebc6&" alt="Secure Token Logger" width="800"/>
 </p>
 
-<h1 align="center">🛡️ Secure Token Logger</h1>
+<h1 align="center">🛡️Token Logger</h1>
 
 <p align="center">
   <b>A proof-of-concept Discord token logger for education and ethical awareness.</b><br>
