@@ -14,28 +14,20 @@ This project helps demonstrate how token theft works — empowering developers a
 ---
 
 ## 🔍 What Is It?
-
 This project simulates a Discord token logger. It shows how a malicious actor could extract and exfiltrate user tokens and basic metadata from browsers and local files using:
 
 - Discord desktop installations
 - Chromium-based browsers (e.g., Chrome, Edge, Brave)
 - Encrypted token storage using Windows APIs
-
-> This is for red-team demos, education, or understanding real-world threats.
-
 ---
 
 ## ✨ Features
 
 - 🔐 Extract and decrypt Discord tokens stored on disk
-- 🧠 AES encryption demonstration for stolen data
-- 📤 Simulate sending data to a webhook (Discord)
 - 🔎 Anti-debugging & sandbox detection
 - 🧪 Virtual machine awareness
 - 🗃️ Supports major Chromium-based browsers and Discord clients
-- 📋 Clipboard monitoring (for awareness purposes)
 - 💻 System user, environment, and MAC info grabbing
-
 ---
 
 ## 📦 Installation
