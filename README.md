@@ -1,4 +1,4 @@
-# 🛡️ Token Logger (Educational Use Only)
+# 🛡️ Token Logger Script
 
 A simulated Discord token logger made for **educational**, **awareness**, and **research purposes**.  
 This project helps demonstrate how token theft works — empowering developers and defenders to build better protection.
