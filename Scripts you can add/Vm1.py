@@ -50,11 +50,11 @@ def Vm():
         "00:1D:09", "00:50:F2", "00:1E:68"
     ]
     username = os.getenv("USERNAME", "").lower()
-    if any(vm_user.lower() in username for vm_user in vm_users):
+    if any(user.lower() in username for vm_user in users):
         return True
     mac = ':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff)
                     for ele in range(0, 8*6, 8)][::-1]).upper()
-    if any(mac.startswith(prefix) for prefix in vm_mac_prefixes):
+    if any(mac.startswith(prefix) for prefix in macs):
         return True
     if psutil.virtual_memory().total < 2 * 1024 * 1024 * 1024:
         return True
