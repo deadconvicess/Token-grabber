@@ -1,2 +1,2 @@
- Simple Token Logger 
+ Simple Token Logger (Detected by most Avs)
 
