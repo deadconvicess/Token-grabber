@@ -1,2 +1,2 @@
- Simple Token Logger ( V2 soon...)
+ Simple Token Logger (V2 soon...)
 
